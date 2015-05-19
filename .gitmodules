@@ -1,0 +1,3 @@
+[submodule "angular-intro"]
+	path = angular-intro
+	url = https://github.com/zootalures/angular-intro.git

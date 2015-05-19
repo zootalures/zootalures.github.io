@@ -1,0 +1,10 @@
+{
+  "name": "AngularTalk",
+  "description": "AngularTalk",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.x",
+    "express-handlebars": "^2.0.1"
+  }
+}

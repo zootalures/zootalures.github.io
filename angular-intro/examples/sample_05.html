@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <script type="text/javascript" src="angular.js"></script>
+</head>
+<body>
+<div ng-controller="SimpleController">
+    Todo List:
+    <div ng-repeat="item in todoList"  >
+       Item : {{item.name}} Priority: {{item.priority}}
+        <input type="checkbox" ng-model="item.done"/>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var app = angular.module("app", []);
+    app.controller("SimpleController", function ($scope) {
+        $scope.todoList = [{name: "Wash Cat", priority: "HIGH" , done : true},
+            {name: "Take out Cat Loan", priority: "Medium",done : false},
+            {name: "Find Cat", priority: "LOW",done : true}
+        ];
+    });
+</script>
+
+</html>

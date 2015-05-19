@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <script type="text/javascript" src="angular.js"></script>
+    <link rel="stylesheet" href="blink.css">
+
+</head>
+<body>
+<div ng-controller="SimpleController">
+    <div owens-directive/>
+</div>
+</body>
+<script type="text/javascript">
+    var app = angular.module("app", []);
+
+    app.directive("owensDirective",function(){
+        return {
+            scope: true,
+            restrict: 'AE',
+            replace: 'true',
+            template: '<blink>Owen Is {{adjective}} Awesome</blink>'
+        };
+    });
+
+    app.controller("SimpleController", function ( $scope) {
+        $scope.adjective ="super";
+    });
+</script>
+
+</html>

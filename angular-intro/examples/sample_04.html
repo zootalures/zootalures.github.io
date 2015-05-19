@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <script type="text/javascript" src="angular.js"></script>
+</head>
+<body>
+<div ng-controller="SimpleController">
+    <div> The Time is  : <b>{{currentTime|reverse}}</b></div>
+</div>
+</body>
+<script type="text/javascript">
+    var app = angular.module("app", []);
+
+    app.filter('reverse', function() {
+        return function(input, uppercase) {
+            input = input || '';
+            var out = "";
+            for (var i = 0; i < input.length; i++) {
+                out = input.charAt(i) + out;
+            }
+            // conditional based on optional argument
+            if (uppercase) {
+                out = out.toUpperCase();
+            }
+            return out;
+        };
+    });
+
+    app.controller("SimpleController", function ($scope) {
+        setInterval(function(){
+                $scope.currentTime = "" + new Date();
+                $scope.$apply();
+          },1000);
+
+    });
+</script>
+
+</html>

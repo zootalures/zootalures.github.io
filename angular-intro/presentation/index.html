@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Angular JS</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+    <div class="slides">
+        <section class="stack">
+            <section class="">
+                <h1>AngularJS</h1>
+
+                <p>GETTING STARTED</p>
+            </section>
+            <section class="">
+                <h2>Getting Started&nbsp;</h2>
+
+                <div>Simple Page</div>
+                <div>
+                <pre>
+<code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+HI I'm a web page
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <br/>
+                <iframe src="../examples/sample_00.html" style="background-color:  white; width: 602px; height: 353.844528939586px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></iframe>
+            </section>
+
+
+            <section class="">
+                <h2>Load Angular</h2>
+
+                <div>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html ng-app="app"&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="angular.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+HI I'm a web page
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+var app = angular.module("app", []);
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+                </div>
+                <br/>
+                <iframe src="../examples/sample_00.html" style="width: 602px; height: 192.437262357414px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></iframe>
+            </section>
+        </section>
+        <section class="stack">
+            <section class="">
+                <h2>Basic Concepts</h2>
+
+                <div>
+                    <b>Model</b> : Some JSON&nbsp;
+                </div>
+                <div>
+                    <b>View</b> : Angular Template &amp; Directives
+
+                </div>
+
+                <div>
+                    <b>Controller</b> : JS code&nbsp;
+                </div>
+            </section>
+
+            <section class="">
+                <h2>Angular Models</h2>
+
+                <div>Are just plain old JS objects (POJSO? :) )&nbsp;</div>
+                <div>(Fields, Lists, Primitives, other Objects) &nbsp;</div>
+                <div>
+                <pre>
+<code>// Simple values
+"some value"
+
+// Lists of stuff
+["a","list", "of ", "stuff"]
+
+// complex objects
+{
+    "name" : "Transactions By Currency",
+    "output" : [{"field" : "txn_count", "agg": "SUM"},
+                {"field" : "txn_curr_code", "agg": "NONE"}]
+}
+</code></pre>
+
+                    <br/>
+                </div>
+            </section>
+            <section class="">
+                <h2>Angular Views</h2>
+
+                <div>Are HTML templates,</div>
+                <div>&nbsp;they use {{handleBars}} style bindings</div>
+                <div>
+                <pre><code>
+&lt;div&gt;
+&lt;div&gt; Hello I am : &lt;b&gt;
+<b>{{greeting}}</b>&lt;/b&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+                </code></pre>
+                </div>
+                <br/>These are dynamically compiled by angular in the browser
+            </section>
+            <section class="">
+                <h2>Angular Controllers</h2>
+
+                <p>Are Functions which bind your
+                    <b>model</b> to your
+                    <b>view</b>
+                </p>
+
+                <p>Via a &nbsp;view model ($scope)&nbsp;</p>
+
+                <div>
+                <pre><code>&lt;div ng-controller="SimpleController"&gt;
+&lt;div&gt; Hello I am : &lt;b&gt;{{greeting}}&lt;/b&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+// Define the app  and it's dependencies
+var app = angular.module("app", []);
+// Register a controller
+app.controller("SimpleController", function ($scope) {
+                    $scope.greeting =
+                      ["A Little Teapot", "Spartacus",
+                       "An Angular Web App"]
+                              [Math.floor(Math.random() * 3)];
+});
+&lt;/script&gt;
+</code></pre>
+                </div>
+                <br/>
+            </section>
+
+
+            <section class="">
+                <h2>Controller E.G</h2>
+                <iframe src="../examples/sample_01.html" style="width: 602px; height: 353.844528939586px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></iframe>
+            </section>
+
+
+            <section class="">
+                <h2>2-Way Binding</h2>
+
+                <div>Binding can go from the model to view {{model.value}}</div>
+                <div>Or from the view to the model (e.g. via ng-model)</div>
+                <div>
+<pre><code>&lt;div ng-controller="SimpleController"&gt;
+&lt;div&gt; Hello I am : &lt;b&gt;{{greeting}}&lt;/b&gt;&lt;/div&gt;
+&lt;div&gt; Input: &lt;input ng-model="greeting"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+    var app = angular.module("app", []);
+    app.controller("SimpleController", function ($scope) {
+        $scope.greeting = "an empty page";
+    });
+&lt;/script&gt;
+                </code></pre>
+                </div>
+                Input Binding is triggered by inputs from bound elements
+                <br/>
+
+                <div>Angular figures out what to do each time</div>
+            </section>
+            <section class="">
+                <h2>2 Way Binding EG</h2>
+
+                <div class="fragment" data-fragment-index="0">
+                    <br/>
+                    <iframe src="../examples/sample_02.html" style="width: 602px; height: 353.844528939586px; max-height: none; max-width: none;"></iframe>
+                </div>
+            </section>
+            <section class="">
+                <h2>Binding: External Changes</h2>
+
+                <p>Angular picks up changes on bound inputs, otherwise you have to
+                    <b>
+                        <i>$apply</i>
+                    </b> the &nbsp;
+                    <b>
+                        <i>$scope</i>
+                    </b>
+                </p>
+<pre><code>&lt;div ng-controller="SimpleController"&gt;
+&lt;div&gt; The Time is  : &lt;b&gt;{{currentTime}}&lt;/b&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+var app = angular.module("app", []);
+
+app.controller("SimpleController", function ($scope) {
+$scope.currentTime = new Date();
+
+setInterval(function(){
+$scope.currentTime = new Date();</code></pre>
+                <pre class="fragment" data-fragment-index="0"><code>       $scope.$apply();</code></pre>
+                <div>
+<pre><code>           },1000);
+});
+&lt;/script&gt;</code></pre>
+                </div>
+                <br/>
+            </section>
+            <section class="">
+                <h2>Apply EG</h2>
+
+                <div>
+                    <br/>
+                    <iframe src="../examples/sample_03.html" style="width: 602px; height: 353.844528939586px; max-height: none; max-width: none; background-color:  white"></iframe>
+                </div>
+            </section>
+
+            <section class="">
+                <h2>Filtering</h2>
+
+                <p> Values in template substitutions can be filtered using filters</p>
+                <pre><code>&lt;div&gt; The Time is  : &lt;b&gt;{{currentTime | reverse }}&lt;/b&gt;&lt;/div&gt;</code></pre>
+                <p class="fragment" data-fragment-index="1"> Useful for rendering static data, internationalisation etc. </p>
+
+                <div class="fragment" data-fragment-index="0">
+                    <br/>
+                    <iframe src="../examples/sample_04.html" style="width: 602px; height: 353.844528939586px; max-height: none; max-width: none; background-color:  white"></iframe>
+                </div>
+
+            </section>
+
+            <section class="">
+                <h2>More complex models and views</h2>
+
+                <p> Bindings can be complex & iterative </p>
+                <pre><code>Todo List:
+&lt;div ng-repeat=&quot;item in todoList&quot; &gt;
+    Item : {{item.name}} Priority: {{item.priority}}
+    &lt;input type=&quot;checkbox&quot; ng-model=&quot;item.done&quot;/&gt;
+&lt;/div&gt;</code></pre>
+        <pre><code>$scope.todoList =
+   [{name: &quot;Wash Cat&quot;, priority: &quot;HIGH&quot; , done : true},
+    {name: &quot;Take out Cat Loan&quot;, priority: &quot;Medium&quot;,done : false},
+    {name: &quot;Find Cat&quot;, priority: &quot;LOW&quot;,done : true}
+];</code></pre>
+                <div class="fragment" data-fragment-index="0">
+                    <iframe src="../examples/sample_05.html" style="width: 602px; height: 200px; max-height: none; max-width: none; background-color:  white"></iframe>
+                    <a href="../examples/sample_05.html" target="_blank">Open frame</a>
+                </div>
+
+            </section>
+
+
+            <section class="">
+<pre><code> app.controller(&quot;SimpleController&quot;, function ($scope) {
+    $scope.newItem = {name: &quot;&quot;, priority: &quot;LOW&quot;, done: false};
+    $scope.todoList = [];
+    $scope.addItem = function(){
+        $scope.todoList.push($scope.newItem);
+        $scope.newItem = {name: &quot;&quot;, priority: &quot;LOW&quot;, done: false};
+    };
+});</code></pre>
+<pre><code>&lt;div ng-controller=&quot;SimpleController&quot;&gt;
+    Todo List:
+    &lt;div ng-repeat=&quot;item in todoList&quot;&gt;
+        Item : {{item.name}} Priority: {{item.priority}}
+        &lt;input type=&quot;checkbox&quot; ng-model=&quot;item.done&quot;/&gt;
+    &lt;/div&gt;
+    New Item : &lt;input ng-model=&quot;newItem.name&quot;&gt;
+&lt;select ng-model=&quot;newItem.priority&quot;&gt;
+    &lt;option value=&quot;HIGH&quot;&gt;HIGH&lt;/option&gt;
+    &lt;option value=&quot;MEDIUM&quot;&gt;MEDIUM&lt;/option&gt;
+    &lt;option value=&quot;LOW&quot;&gt;LOW&lt;/option&gt;
+&lt;/select&gt;
+    &lt;button ng-click=&quot;addItem()&quot; &gt;Add&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </section>
+            <section class="">
+                <iframe src="../examples/sample_06.html" style="width: 602px; height: 200px; max-height: none; max-width: none; background-color:  white"></iframe>
+            </section>
+        </section>
+
+        <section class="stack">
+
+            <section class="">
+                <h2>Services, Injection and Coupling</h2>
+
+                <p>If you are familiar with Spring Contexts, it's quite easy to understand Angular DI </p>
+
+                <p> there are many out of the box (and pluggable) services around </p>
+
+                <p class="fragment" data-fragment-index="0">
+                    <b>$http</b> : the HTTP client</br>
+                    <b>$cookies</b> Browser cookies</br>
+                    <b>$animate</b> : animators</br>
+                    <b>$q</b> : the promise factory</br>
+                    and many more
+                </p>
+
+            </section>
+            <section class="">
+                <h2>DI and services</h2>
+
+                <p> Pass the dependency reference as a named parameter to the object definition</p>
+                <pre class="fragment" data-fragment-index="0"><code>app.controller(&quot;SimpleController&quot;, function ($http,$scope) {</code></pre>
+                <pre class="fragment" data-fragment-index="1"><code>$http.get(&quot;/testData&quot;).then(function (resp) {
+          console.log(&quot;got data of type &quot;,resp,typeof (resp));
+          $scope.remoteContent = resp.data.serverUptime;
+          $scope.$apply();
+      }).catch(function(e){
+          console.log(&quot;an errror occured&quot;,e);
+      });
+    });</code></pre>
+                <pre class="fragment" data-fragment-index="2"><code>app.controller(&quot;SimpleController&quot;,
+                  [&quot;$http&quot;,&quot;$scope&quot;, function ($http,$scope) {</code></pre>
+
+                <a href="/testData" target="_blank">service</a>
+            </section>
+            <section class="">
+                <iframe src="../examples/sample_07.html" style="width: 602px; height: 200px; max-height: none; max-width: none; background-color:  white"></iframe>
+            </section>
+
+            <section class="">
+                <h2>Defining new injectable things</h2>
+            <pre class="fragment" data-fragment-index="0"><code>app.factory(&quot;UptimeService&quot;, function ($http) {
+        return {
+            getUpTime: function () {
+                return $http.get(&quot;/testData&quot;).catch(function (e) {
+                    console.log(&quot;an http error occured&quot;, e);
+                    throw e;
+                }).then(function(resp){
+                    return resp.data.serverUptime;
+                });
+            }
+        }
+    });</code></pre>
+
+            <pre class="fragment" data-fragment-index="1"><code>app.controller(&quot;SimpleController&quot,
+    function (UptimeService, $scope) {
+      UptimeService.getUpTime().then(function (uptime) {
+          $scope.remoteContent = uptime;
+      });</code></pre>
+
+            </section>
+
+
+            <section class="">
+                <h2>Service, Prototype, Repository, Factory, Constant : WTF?</h2>
+
+                <div class="fragment" data-fragment-index="0">
+                    <p>All different ways of creating injectable things, with variations in :</p>
+                    <ul>
+                        <li>How they are constructed</li>
+                        <li>When they are constructed</li>
+                        <li>Whether they are singletons or not</li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <section class="stack">
+            <section class="">
+                <h2>Directives</h2>
+
+                <div>
+                    <p class="fragment" data-fragment-index="0">A chunk of code that (contributes to) managing a part of the view </p>
+
+                    <p class="fragment" data-fragment-index="1">May or may not be associated with a scope</p>
+
+                    <p class="fragment" data-fragment-index="2">E.g. a widget</p>
+
+                    <p class="fragment" data-fragment-index="3"><em>Massively</em> over-used in the MM</p>
+                </div>
+            </section>
+            <section>
+            <pre><code>app.directive(&quot;owensDirective&quot;,function(){
+    return {
+        scope: true,
+        restrict: 'AE',
+        replace: 'true',
+        template: '&lt;blink&gt;Owen Is {{adjective}} Awesome&lt;/blink&gt;'
+    };
+});
+app.controller(&quot;SimpleController&quot;, function ( $scope) {
+    $scope.adjective =&quot;super&quot;;
+});
+</code></pre>
+
+                <pre class="fragment" data-fragment-index="1"><code>&lt;div owens-directive/&gt;</code></pre>
+                <iframe class="fragment" data-fragment-index="2" src="../examples/sample_09.html" style="width: 602px; height: 200px; max-height: none; max-width: none; background-color:  white"></iframe>
+
+
+            </section>
+        </section>
+
+        <section class="stack">
+            <section class="">
+                <h2>Modules and scaling up </h2>
+
+                <p>
+                    Angular projects can use third party modules:
+                </p>
+                <pre class="fragment" data-fragment-index="0"><code> var app = angular.module(&quot;app&quot;, []);</code></pre>
+            <pre class="fragment" data-fragment-index="1"><code> var app = angular.module('app', [
+    # Angular modules
+    'ngRoute',
+    'ngAnimate',
+    # 3rd Party Modules
+    'ui.bootstrap',
+    'easypiechart',
+     ...
+</code></pre>
+                <p class="fragment" data-fragment-index="2">
+                    imports directives, services etc from other modules
+                </p>
+            </section>
+
+            <section class="">
+                <h2>Modularising your app </h2>
+
+                <p>
+                    Modularise by feature not by type of object:
+                </p>
+
+                <p>
+                    Be wise.
+                </p>
+
+
+            </section>
+        </section>
+
+
+        <section class="stack">
+            <section class="">
+                <h2>Build it</h2>
+                <p> Lots of new tools </p>
+                <ul>
+                    <li>npm</li>
+                    <li>bower</li>
+                    <li>karma</li>
+                    <li>grunt</li>
+                </ul>
+
+            </section>
+
+
+            <section class="">
+                <h2>NPM : Node Package Manager</h2>
+                <p> Defines depenencies for your <b>build</b> via <b>package.json</b></p>
+               <pre class="fragment" data-fragment-index="0"><code>{
+  &quot;name&quot;: &quot;supercool-app&quot;,
+  &quot;version&quot;: &quot;3.1.0&quot;,
+  &quot;description&quot;: &quot;Like totally the best app ever&quot;,
+  &quot;homepage&quot;: &quot;http://mybestapp.com&quot;,
+  &quot;subdomain&quot;: &quot;app&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;grunt-contrib-qunit&quot;: &quot;~0.5.2&quot;,
+    &quot;grunt-contrib-jshint&quot;: &quot;~0.6.4&quot;,
+  ...
+  }
+}</code></pre>
+<pre class="fragment" data-fragment-index="1"><code>$ npm install   </code></pre>
+            </section>
+
+
+            <section class="">
+                <h2>Bower : Client Package Manager</h2>
+                <p> Defines depenencies for your <b>app</b> via <b>bower.json</b></p>
+               <pre class="fragment" data-fragment-index="0"><code>{
+  &quot;name&quot;: &quot;nuportal-client&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;dependencies&quot;: {
+    &quot;jquery&quot;: &quot;~2.1.0&quot;,
+    &quot;angular&quot;: &quot;~1.2.0&quot;,
+    &quot;angular-resource&quot;: &quot;~1.2.0&quot;,
+    &quot;angular-cookies&quot;: &quot;~1.2.0&quot;,
+    &quot;angular-sanitize&quot;: &quot;~1.2.0&quot;,
+    &quot;angular-route&quot;: &quot;~1.2.0&quot;,
+    &quot;angular-animate&quot;: &quot;~1.2.0&quot;
+   }
+}</code></pre>
+                <pre class="fragment" data-fragment-index="1"><code>$ bower install   </code></pre>
+            </section>
+
+            <section class="">
+                <h2>Grunt</h2>
+                <p> Executes build tasks </p>
+               <pre class="fragment" data-fragment-index="0"><code>module.exports = function (grunt) {
+  require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt);
+
+  grunt.initConfig({
+      livereload: {
+        options: {
+          livereload: '&lt;%= connect.options.livereload %&gt;'
+        }
+     }
+   });
+  grunt.registerTask('server', function (target) {
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    }
+
+    grunt.task.run([
+      'clean:server',
+      'concurrent:server',
+      'autoprefixer',
+      'connect:livereload',
+      'watch'
+    ]);
+  });
+}
+</code></pre>
+                <pre class="fragment" data-fragment-index="1"><code>$ grunt server   </code></pre>
+            </section>
+
+
+            <section class="">
+                <h2>Karma</h2>
+                <p> Runs your tests</p>
+                <p class="fragment" data-fragment-index="0"> Actually, that's pretty much it</p>
+            </section>
+
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
+</html>

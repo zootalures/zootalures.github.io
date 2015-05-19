@@ -1,0 +1,3 @@
+[submodule "angular-talk"]
+	path = angular-talk
+	url = ssh://git@stash.paypoint.net:7999/~owencliffe/angular-talk.git

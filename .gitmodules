@@ -3,4 +3,4 @@
 	url = https://github.com/zootalures/angular-intro.git
 [submodule "soma_talk"]
 	path = soma_talk
-	url = git@github.com:zootalures/soma_talk.git
+	url = https://github.com/zootalures/soma_talk.git

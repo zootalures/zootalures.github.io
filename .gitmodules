@@ -5,3 +5,6 @@
 [submodule "soma_talk"]
 	path = soma_talk
 	url = https://github.com/zootalures/soma_talk.git
+[submodule "securing-microservices-lightning-talk"]
+	path = securing-microservices-lightning-talk
+	url = https://github.com/zootalures/securing-microservices-lightning-talk.git
